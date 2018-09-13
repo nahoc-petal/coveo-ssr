@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+@import 'fonts';
+
+// Set your brand colors
+$orange: #ED731A;
+$blue: #003bde;
+
+// Update Bulma's global variables
+$family-sans-serif: "Lato", sans-serif;
+$primary: $orange;
+$link: $blue;
+$black: #30435c;
+
+// Import Bulma
+@import "../node_modules/bulma/bulma.sass";
+
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 53px;
+}
+
+.title {
+  font-family: 'Tiempos';
+  font-size: 56px;
+}
+
+.subtitle {
+  font-weight: 300;
+}
+
+.small-column {
+  flex-basis: unset;
+  flex-grow: unset;
+}
+
+.box {
+  box-shadow: none;
+  border: 1px solid #dee1e5;
+}
+
+.navbar-item {
+  &:hover {
+    background-color: unset!important;
+  }
+}
+
+.text-blue {
+  color: $blue;
+}
+
+.text-black {
+  color: $black!important;
+}

@@ -1,10 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { browserHistory } from 'react-router';
+import './style';
+import App from './components/App';
 
-import Routes from './routes';
-
-ReactDOM.render(
- <Routes history={browserHistory} />,
- document.getElementById('root')
-);
+export default App;
