@@ -23,21 +23,11 @@ const Header = () => (
 			<div id="navbarExampleTransparentExample" class="navbar-menu">
 				<div class="navbar-end">
 					<Link class="navbar-item" href="https://bulma.io/">
-          Home
+          FAQ
 					</Link>
-					<div class="navbar-item has-dropdown is-hoverable">
-						<Link class="navbar-link" href="/documentation/overview/start/">
-            Docs
-						</Link>
-						<div class="navbar-dropdown is-boxed">
-							<Link class="navbar-item" href="/documentation/overview/start/">
-              Overview
-							</Link>
-							<Link class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-              Modifiers
-							</Link>
-						</div>
-					</div>
+          <Link class="navbar-item" href="https://bulma.io/">
+          Internship
+					</Link>
 					<div class="navbar-item">
 						<p class="control">
 							<Link class="button is-primary">

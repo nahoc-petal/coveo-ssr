@@ -1,8 +1,8 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 
-import Header from './header';
-import Footer from './footer';
+import Header from './Header';
+import Footer from './Footer';
 
 // Code-splitting is automated for routes
 import Home from '../routes/home';
@@ -26,7 +26,7 @@ export default class App extends Component {
 				<Header />
 				<Router onChange={this.handleRoute}>
 					<Home path="/" />
-					<Job path="/job/:job/:id" />
+					<Job path="/job/:job?/:id" />
 					<Search path="/jobs/:search?/:department?/:city?" />
 				</Router>
 				<Footer />
