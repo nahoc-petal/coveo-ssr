@@ -5,6 +5,7 @@ import JobPicker from './../../components/JobPicker';
 import { Link } from 'preact-router/match';
 import Helmet from 'preact-helmet';
 import Player from 'react-lazy-youtube';
+import Quote from './../../components/Quote';
 
 export default class Home extends Component {
 
@@ -30,6 +31,23 @@ export default class Home extends Component {
   		description: 'coveos first local office is based in sunny Los Angeles, California. Surrounded by scenic views, great restaurants, and even better people, the LA office is home to many departments, including Engineering and Clinical.',
   		directions_url: 'https://google.ca/'
   	}],
+  	perks: [{
+  		image: 'https://images.ctfassets.net/plyq12u1bv8a/6eJMms6FMWoIEC4ys2k0WY/a3624ebb143d2f21f9d227c85e67163c/CAREERS_CARD_HEALTHINSURANCE.jpg?w=1900',
+  		name: 'Health Insurance',
+  		description: 'Of course. Oscar employees get great health insurance for themselves and their families.'
+  	}, {
+  		image: 'https://images.ctfassets.net/plyq12u1bv8a/6eJMms6FMWoIEC4ys2k0WY/a3624ebb143d2f21f9d227c85e67163c/CAREERS_CARD_HEALTHINSURANCE.jpg?w=1900',
+  		name: '401k',
+  		description: 'We want you to be able to save for a long retirement.'
+  	}, {
+  		image: 'https://images.ctfassets.net/plyq12u1bv8a/6eJMms6FMWoIEC4ys2k0WY/a3624ebb143d2f21f9d227c85e67163c/CAREERS_CARD_HEALTHINSURANCE.jpg?w=1900',
+  		name: '401k',
+  		description: 'We want you to be able to save for a long retirement.'
+  	}, {
+  		image: 'https://images.ctfassets.net/plyq12u1bv8a/6eJMms6FMWoIEC4ys2k0WY/a3624ebb143d2f21f9d227c85e67163c/CAREERS_CARD_HEALTHINSURANCE.jpg?w=1900',
+  		name: '401k',
+  		description: 'We want you to be able to save for a long retirement.'
+  	}],
   	departments: [{
   		name: 'Techno',
   		description: 'wokr hard play hard bla bla'
@@ -52,15 +70,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-
-  	/*fetch('http://localhost:8080/api/collections/get/offices?token=e0649253150aaceff53d83d39f9fc7')
-  		.then(response => response.json())
-  		.then(data => {
-        console.log(data);
-  			this.setState({
-  				offices: data.entries
-  			});
-  		});*/
+  	this.props.onLoadComplete();
   }
 
   renderOffices = (offices) => {
@@ -74,7 +84,7 @@ export default class Home extends Component {
   				/>
   				{/*<img src={'http://52.0.76.6' + office.image.url} />*/}
   				<div class="columns">
-  					<div class="column is-4">
+  					<div class="column is-5">
   						<h2 class="title" style={{
   							fontSize: 24,
   							fontWeight: 400,
@@ -95,7 +105,7 @@ export default class Home extends Component {
   							fontSize: 14,
   							lineHeight: '30px'
   						}} href={office.directions_url}
-  							>Get Directions</a>
+  							>Get Directions &nbsp;&nbsp;›</a>
   						</p>
 
   					</div>
@@ -108,18 +118,53 @@ export default class Home extends Component {
   						>{office.description}</p>
   					</div>
   			  </div>
-  				<br />
   			</div>
   		);
   	});
   	return officesNode;
   };
 
+  renderPerks = (perks) => {
+  	const perksNode = [];
+  	perks.forEach(perk => {
+  		perksNode.push(
+  			<div class="column is-half" style={{
+  				alignItems: 'stretch'
+  			}}
+  			>
+  				<div style={{
+  					backgroundColor: '#ffffff',
+  					padding: 90,
+  					height: '100%'
+  				}}
+  				>
+  					<img src={perk.image} />
+  					<h3 style={{
+  						color: '#051033',
+  						fontSize: 18,
+  						lineHeight: '34px',
+  						fontWeight: 400
+  					}}
+  					>{perk.name}</h3>
+  					<p style={{
+  						color: '#65718b',
+  						fontWeight: 300,
+  						fontSize: 18,
+  						lineHeight: '34px'
+  					}}
+  					>{perk.description}</p>
+  				</div>
+  			</div>
+  		);
+  	});
+  	return perksNode;
+  };
+
   renderDepartments = (departments) => {
   	const departmentsNode = [];
   	departments.forEach(department => {
   		departmentsNode.push(
-  			<div class="column is-one-third" style={{
+  			<Link href="/department/technology" class="column is-one-third" style={{
   				alignSelf: 'stretch'
   			}}
   			>
@@ -127,17 +172,23 @@ export default class Home extends Component {
   					height: '100%'
   				}}
   				>
-  					<img src="https://images.ctfassets.net/plyq12u1bv8a/5pJSbu5nA4mUwaSIQkQqWk/a6d8790747e5abfe68044d9d7727f3ff/losangeles.jpg" />
+  						<img
+  						style={{
+  								borderTopLeftRadius: 4,
+  								borderTopRightRadius: 4
+  							}}
+  						src="https://images.ctfassets.net/plyq12u1bv8a/6xEvkrMQNiieK4qaoCQGqg/8b8df4e0ce2c940162e6e0d1d53002fa/Thumbnail_Care.jpg"
+  						/>
   					<div style={{
-  						padding: 24
+  							padding: 24
   					}}
   					>
   					<h2 style={{
   							color: '#001837',
   							fontSize: 25,
-                lineHeight: '36px',
-                fontWeight: 400,  
-                fontFamily: 'Lato'
+  							lineHeight: '36px',
+  							fontWeight: 400,
+  							fontFamily: 'Lato'
   						}} class="title"
   					>{department.name}</h2>
   					<p style={{
@@ -147,10 +198,11 @@ export default class Home extends Component {
   						}}
   					>{department.description}
   							<br /><br />
-  							<a href="#">link nubw e asdf</a></p>
+  							<span class="text-blue">link nubw e asdf&nbsp;&nbsp;›</span>
+  						</p>
   					</div>
   				</div>
-  			</div>
+  			</Link>
   		);
   	});
   	return departmentsNode;
@@ -159,10 +211,10 @@ export default class Home extends Component {
 
   render() {
 
-  	const { offices, departments } = this.state;
+  	const { offices, departments, perks } = this.state;
     
   	return (
-  		<div>
+  		<div class="animated animatedFadeInUp fadeInUp">
   			<Helmet
 	        htmlAttributes={{ lang: 'en', amp: undefined }} // amp takes no value
 	        title="Careers at Coveo"
@@ -172,77 +224,61 @@ export default class Home extends Component {
   				]}
   			/>
   			<div class="container">
-  				<Hero
+  				<section class="section">
+  					<Hero
 	title={'title'}
 	subtitle={'subtitle'}
-  				/>
-  				<JobPicker />
-  				<br />
-  				<br />
-  				<br />
-  				<Player id="pwfgkRRiQ-0" imageSize="maxresdefault" />
-  				{/*<div class="embed-container">
-  					<iframe src="https://www.youtube.com/embed/pwfgkRRiQ-0?modestbranding=1&autohide=1&showinfo=0&controls=0" frameBorder="0" allowfullscreen />
-        </div>*/}
-        <br />
+  					/>
+            					<JobPicker />
+  				</section>
+
+  				<section class="section">
+  					<Player id="pwfgkRRiQ-0" imageSize="maxresdefault" />
+  				</section>
   				<Hero
 	title={'Join the best minds working on the hardest problems.'}
-	subtitle={'The driven people who make up Oscars teams come from all over, with backgrounds as technology leaders, policy makers, and beyond. And they all have one thing in common – the desire to make a frustrating system more human and more friendly. You don’t have to have experience in health care – you just have to want to fix it. Ready to rebuild health care? Check out our job openings.'}
+	subtitle={'The driven people who make up Coveo teams come from all over, with backgrounds as technology leaders, policy makers, and beyond. And they all have one thing in common – the desire to make a frustrating system more human and more friendly. You don’t have to have experience in health care – you just have to want to fix it. Ready to rebuild health care? Check out our job openings.'}
   				/>
-             <br />
-  				<div class="columns is-multiline">
+  				<section class="section">
+  					<div class="columns is-multiline departments">
   					{this.renderDepartments(departments)}
   				</div>
+  				</section>
+
+  					<Quote
+	quote={'Within one month of working at Coveo I declared to my friends and family that I have become a search nerd.'}
+	author={'Iain N, Software Engineer'}
+  					/>
+
   				<Hero
 	title={'Our locations'}
 	subtitle={'We’re in four cities.'}
   				/>
-  				<div class="columns is-multiline">
+  				<section class="section">
+  					<div class="columns is-multiline">
   					{ offices ? this.renderOffices(offices) : null }
   				</div>
-  				<br />
-  				<br /><br /><br /><br />
+  				</section>
   			</div>
         
   			<section class="section" style={{
-  				backgroundColor: '#f8f8f8'
+  				backgroundColor: '#f8f8f8',
+  				paddingBottom: 90
   			}}
   			>
   				<div class="container">
   					<Hero
   						title={'Great perks for every employee'}
   					/>
-  					<div class="columns">
-  						<div class="column is-half">
-  							<div style={{
-  								backgroundColor: '#ffffff',
-  								padding: 90
-  							}}
-  							>
-  								<img src="" />
-  								<h3>Health Insurance</h3>
-  								<p>Of course. Oscar employees get great health insurance for themselves and their families.</p>
-  							</div>
-  						</div>
-  						<div class="column is-half">
-  							<div style={{
-  								backgroundColor: '#ffffff',
-  								padding: 90
-  							}}
-  							>
-  								<img src="" />
-  								<h3>Health Insurance</h3>
-  								<p>Of course. Oscar employees get great health insurance for themselves and their families.</p>
-  							</div>
-  						</div>
+  					<div class="columns is-multiline">
+  						{ perks ? this.renderPerks(perks) : null }
   					</div>
-  					<br />
-  					<br />
-  					<br />
-  					<br />
   				</div>
   			</section>
-  			<Banner />
+  			<section class="section">
+  				<Banner />
+  			</section>
+
   		</div>
   	);
   }

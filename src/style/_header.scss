@@ -1,0 +1,42 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: $white;
+  z-index: 1;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.navbar-item {
+  &:first-of-type {
+    padding-left: 0;
+  }
+
+  &:hover {
+    background-color: unset !important;
+  }
+}
+
+.navbar-burger {
+  margin-right: -1rem;
+}
+
+.loader-bar {
+  background: linear-gradient(271deg, #33e3d9, #1a82be);
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 1.2s ease infinite;
+  -moz-animation: AnimationName 1.2s ease infinite;
+  animation: AnimationName 1.2s ease infinite;
+  height: 5px;
+}
+
+.loader-bar-wrapper {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+}

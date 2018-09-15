@@ -1,0 +1,42 @@
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span {
+    text-align: left!important;
+  } 
+  p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 300;
+    span {
+      font-weight: 300!important;
+    }
+    strong {
+      font-weight: 400!important;
+    }
+  }
+}
+
+.title {
+  font-family: 'Tiempos';
+  font-size: 56px;
+}
+
+.subtitle {
+  font-weight: 300;
+}
+
+.text-blue {
+  color: $blue;
+}
+
+.text-black {
+  color: $black !important;
+}

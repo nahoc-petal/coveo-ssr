@@ -1,21 +1,16 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
 import Hero from './../../components/Hero';
-import JobPicker from './../../components/JobPicker';
+import Quote from './../../components/Quote';
 import { API_URL, TOKEN_FR, TOKEN_EN } from './../../config/api';
+import Player from 'react-lazy-youtube';
 import slugify from 'slugify';
 
-export default class Search extends Component {
+
+export default class Department extends Component {
   
-	componentWillMount() {
-  	fetch(`${API_URL}/${TOKEN_EN}/jobs`)
-  		.then(response => response.json())
-  		.then(data => {
-  			this.setState({
-  				jobs: data.jobs
-				});
-				this.props.onLoadComplete();
-			});
+	componentDidMount() {
+		this.props.onLoadComplete();
 	}
   
   renderJobs = (jobs) => {
@@ -62,28 +57,36 @@ export default class Search extends Component {
   	});
   	return jobsNode;
   }
-
+  
   render() {
   	const { jobs } = this.state;
   	return (
-  		<div class="container animated animatedFadeInUp fadeInUp">
+  		<div class="container">
   			<section class="section" style={{ paddingTop: '1.5rem' }}>
   				<nav class="breadcrumb is-paddingless" aria-label="breadcrumbs">
   				<ul class="is-paddingless">
   					<li><Link style={{ fontSize: 14 }} class="text-black" href="#">Overview</Link></li>
   					<li><Link style={{ fontSize: 14 }} class="text-black" href="/jobs">All Jobs</Link></li>
+  						<li>
+  							<Link style={{ fontSize: 14 }} class="text-black" href="#">
+								Technology
+  							</Link>
+  						</li>
   				</ul>
   			</nav>
   				<Hero
-	title={'title'}
-	subtitle={'subtitle'}
+  					title={'Our Technology team keeps it simple. And human.'}
+  					subtitle={'Revolutionizing an old and backwards industry means new technology and forward-thinking ideas. And the grit to deal with messy problems.'}
   				/>
-        		<JobPicker />
-  			</section>
+  					<Player id="pwfgkRRiQ-0" imageSize="maxresdefault" />
+  				<Quote
+  					quote={'Within one month of working at Coveo I declared to my friends and family that I have become a search nerd.'}
+  					author={'Iain N, Software Engineer'}
+  				/>
+  				</section>
   			<section class="section">
   				{jobs ? this.renderJobs(jobs) : null}
   			</section>
- 
   		</div>
   	);
   }

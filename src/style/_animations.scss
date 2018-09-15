@@ -1,0 +1,102 @@
+@keyframes fadeInUp {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+      transform: translate3d(0,40px,0)
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+      opacity: 1
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate3d(0,-5px,0)
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+  }
+}
+
+@-webkit-keyframes slideDown {
+  from {
+      transform: translate3d(0,-5px,0)
+  }
+
+  to {
+      transform: translate3d(0,0,0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translate3d(0,0px,0)
+  }
+
+  to {
+      transform: translate3d(0,-5px,0);
+  }
+}
+
+@-webkit-keyframes slideUp {
+  from {
+      transform: translate3d(0,0px,0)
+  }
+
+  to {
+      transform: translate3d(0,-5px,0);
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+  opacity: 0
+}
+
+.animatedSlideDown {
+  top: 0px;
+}
+
+.slideUp {
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-name: slideUp;
+  -webkit-animation-name: slideUp;
+  animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+}
+
+.slideDown {
+  animation-duration: 0.4s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-name: slideDown;
+  -webkit-animation-name: slideDown;
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+}
