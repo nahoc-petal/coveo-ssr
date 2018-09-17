@@ -1,13 +1,13 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
 import decode from 'decode-html';
-import { API_URL, TOKEN_FR, TOKEN_EN } from './../../config/api';
+import { fetchJobById } from './../../config/api';
 
 export default class Job extends Component {
   
 	componentWillMount() {
-  	fetch(`${API_URL}/${TOKEN_EN}/jobs/${this.props.matches.id}`)
-  		.then(response => response.json())
+		const jobId = this.props.matches.id;
+		fetchJobById(jobId)
   		.then(data => {
   			this.setState({
   				job: data
@@ -19,7 +19,7 @@ export default class Job extends Component {
 	render() {
   	const { job } = this.state;
   	return (
-  		<div class="container" style={{
+  		<div class="container animated animatedFadeInUp fadeInUp" style={{
 				paddingTop: '20px'
   		}}
   		>
@@ -53,10 +53,27 @@ export default class Job extends Component {
 						<br />
   					<div class="level">
   						<div class="level-left">
-  							<button class="button is-medium text-blue">Apply for this job</button>
+								<Link href="/apply">
+  							<button class="button is-medium text-blue" style={{
+										padding: '0px 24px',
+										height: '55px',
+										fontSize: 18
+									}}
+  							>Apply for this job</button>
+								</Link>
   						</div>
   						<div class="level-right">
-  							<p>share this job</p>
+  							<p style={{
+									fontSize: 14,
+									lineHeight: '34px',
+									color: '#051033'
+								}}
+  							>Share this job<br />
+									<a class="social-icon facebook" href="/">facebook</a>
+									<a class="social-icon twitter" href="/">twitter</a>
+									<a class="social-icon linkedin" href="/">linkedin</a>
+									<a class="social-icon mail" href="/">email</a>
+								</p>
   						</div>
   					</div>
 						<br />

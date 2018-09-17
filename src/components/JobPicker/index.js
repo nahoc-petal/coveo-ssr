@@ -6,8 +6,8 @@ class JobPicker extends Component {
   state = {
   	departments: null,
   	offices: null,
-  	selectedDepartment: null,
-  	selectedOffice: null
+  	selectedDepartment: '',
+  	selectedOffice: ''
   }
 
   componentDidMount() {
@@ -61,8 +61,8 @@ class JobPicker extends Component {
   }
 
   onClickSearch = (event) => {
-  	const department = this.state.selectedDepartment ? '/' + this.state.selectedDepartment : null;
-  	const office = this.state.selectedOffice ? '/' + this.state.selectedOffice : null;
+  	const department = this.state.selectedDepartment ? '/' + this.state.selectedDepartment : '';
+  	const office = this.state.selectedOffice ? '/' + this.state.selectedOffice : '';
   	route('/jobs/search' + department + office, true);  // replaces the current history entry
   }
 

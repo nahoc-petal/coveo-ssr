@@ -2,27 +2,37 @@ import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
 import Hero from './../../components/Hero';
 import JobPicker from './../../components/JobPicker';
-import { API_URL, TOKEN_FR, TOKEN_EN } from './../../config/api';
+import { fetchJobs } from './../../config/api';
 import slugify from 'slugify';
 
 export default class Search extends Component {
   
 	componentWillMount() {
-  	fetch(`${API_URL}/${TOKEN_EN}/jobs`)
-  		.then(response => response.json())
-  		.then(data => {
-  			this.setState({
-  				jobs: data.jobs
+  	fetchJobs().then(data => {
+			console.log(data);
+			this.setState({
+				jobs: data.jobs
+			});
+			this.props.onLoadComplete();
+		});
+	}
+  
+	componentWillReceiveProps(prevProps) {
+  	if (this.props.url !== prevProps.url) {
+			fetchJobs().then(data => {
+				this.setState({
+					jobs: data.jobs
 				});
 				this.props.onLoadComplete();
 			});
+  	}
 	}
   
   renderJobs = (jobs) => {
   	const jobsNode = [];
   	jobs.forEach(job => {
   		jobsNode.push(
-  			<Link class="columns" href={'/job/' + slugify(job.title).toLowerCase() + '/' + job.id} style={{
+  			<Link class="job columns" href={'/job/' + slugify(job.title).toLowerCase() + '/' + job.id} style={{
   				borderBottomWidth: 1,
   				borderBottomStyle: 'solid',
   				borderBottomColor: '#f7f7f7'
@@ -75,12 +85,21 @@ export default class Search extends Component {
   				</ul>
   			</nav>
   				<Hero
-	title={'title'}
-	subtitle={'subtitle'}
+  					alignment="center"
+  					title={'title'}
+  					subtitle={'subtitle'}
   				/>
         		<JobPicker />
   			</section>
   			<section class="section">
+  				<h3 style={{
+  					fontSize: 28,
+  					color: '#001837',
+  					lineHeight: '60px',
+  					fontWeight: 300
+  				}}
+  				>Jobs (49)</h3>
+  				<hr />
   				{jobs ? this.renderJobs(jobs) : null}
   			</section>
  

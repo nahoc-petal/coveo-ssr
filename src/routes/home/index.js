@@ -4,8 +4,9 @@ import Banner from './../../components/Banner';
 import JobPicker from './../../components/JobPicker';
 import { Link } from 'preact-router/match';
 import Helmet from 'preact-helmet';
-import Player from 'react-lazy-youtube';
+import Player from './../../lib/react-lazy-youtube';
 import Quote from './../../components/Quote';
+import slugify from 'slugify';
 
 export default class Home extends Component {
 
@@ -58,7 +59,8 @@ export default class Home extends Component {
   		name: 'Marketing',
   		description: 'wokr hard play hard bla bla'
   	},{
-  		name: 'Techno',
+  		image: 'https://careers.coveo.com/content/1-home/background1.png',
+  		name: 'HR',
   		description: 'wokr hard play hard bla bla'
   	}, {
   		name: 'Business',
@@ -164,7 +166,7 @@ export default class Home extends Component {
   	const departmentsNode = [];
   	departments.forEach(department => {
   		departmentsNode.push(
-  			<Link href="/department/technology" class="column is-one-third" style={{
+  			<Link href={`/department/${slugify(department.name).toLowerCase()}`} class="column is-one-third" style={{
   				alignSelf: 'stretch'
   			}}
   			>
@@ -173,11 +175,11 @@ export default class Home extends Component {
   				}}
   				>
   						<img
-  						style={{
+	style={{
   								borderTopLeftRadius: 4,
-  								borderTopRightRadius: 4
+  							borderTopRightRadius: 4
   							}}
-  						src="https://images.ctfassets.net/plyq12u1bv8a/6xEvkrMQNiieK4qaoCQGqg/8b8df4e0ce2c940162e6e0d1d53002fa/Thumbnail_Care.jpg"
+	src={department.image ? department.image : 'https://images.ctfassets.net/plyq12u1bv8a/6xEvkrMQNiieK4qaoCQGqg/8b8df4e0ce2c940162e6e0d1d53002fa/Thumbnail_Care.jpg'}
   						/>
   					<div style={{
   							padding: 24
@@ -226,18 +228,25 @@ export default class Home extends Component {
   			<div class="container">
   				<section class="section">
   					<Hero
-	title={'title'}
-	subtitle={'subtitle'}
+  						alignment="center"
+  						title={'title'}
+  						subtitle={'subtitle'}
   					/>
             					<JobPicker />
   				</section>
 
-  				<section class="section">
-  					<Player id="pwfgkRRiQ-0" imageSize="maxresdefault" />
+  				<section class="section youtube-wrapper">
+  					<Player
+	            id="pwfgkRRiQ-0"
+  						imageSize="maxresdefault"
+  						onPlay
+  					/>
   				</section>
   				<Hero
-	title={'Join the best minds working on the hardest problems.'}
-	subtitle={'The driven people who make up Coveo teams come from all over, with backgrounds as technology leaders, policy makers, and beyond. And they all have one thing in common – the desire to make a frustrating system more human and more friendly. You don’t have to have experience in health care – you just have to want to fix it. Ready to rebuild health care? Check out our job openings.'}
+
+  					alignment="center"
+	  					title={'Join the best minds working on the hardest problems.'}
+  					subtitle={'The driven people who make up Coveo teams come from all over, with backgrounds as technology leaders, policy makers, and beyond. And they all have one thing in common – the desire to make a frustrating system more human and more friendly. You don’t have to have experience in health care – you just have to want to fix it. Ready to rebuild health care? Check out our job openings.'}
   				/>
   				<section class="section">
   					<div class="columns is-multiline departments">
@@ -246,13 +255,14 @@ export default class Home extends Component {
   				</section>
 
   					<Quote
-	quote={'Within one month of working at Coveo I declared to my friends and family that I have become a search nerd.'}
-	author={'Iain N, Software Engineer'}
+  					quote={'Within one month of working at Coveo I declared to my friends and family that I have become a search nerd.'}
+  					author={'Iain N, Software Engineer'}
   					/>
 
   				<Hero
-	title={'Our locations'}
-	subtitle={'We’re in four cities.'}
+  					alignment="center"
+  					title={'Our locations'}
+  					subtitle={'We’re in four cities.'}
   				/>
   				<section class="section">
   					<div class="columns is-multiline">
@@ -268,7 +278,8 @@ export default class Home extends Component {
   			>
   				<div class="container">
   					<Hero
-  						title={'Great perks for every employee'}
+  						alignment="center"
+	title={'Great perks for every employee'}
   					/>
   					<div class="columns is-multiline">
   						{ perks ? this.renderPerks(perks) : null }

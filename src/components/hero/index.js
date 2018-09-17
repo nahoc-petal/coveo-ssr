@@ -1,7 +1,9 @@
 import { h } from 'preact';
 
 const Hero = (props) => (
-	<div class="hero has-text-centered">
+	<div class="hero" style={{
+    textAlign: props.alignment
+  }}>
 		<div class="hero-body" style={{
 			maxWidth: 800,
 			margin: 'auto'

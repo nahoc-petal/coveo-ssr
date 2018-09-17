@@ -9,9 +9,23 @@
   padding-bottom: 5px;
 }
 
+.navbar-brand {
+  .navbar-item {
+    padding: 0;
+    img {
+      max-height: unset;
+      height: 28px;
+    }
+  }
+}
+
 .navbar-item {
   &:first-of-type {
     padding-left: 0;
+  }
+
+  &:last-of-type {
+    padding-right: 0;
   }
 
   &:hover {
@@ -26,9 +40,9 @@
 .loader-bar {
   background: linear-gradient(271deg, #33e3d9, #1a82be);
   background-size: 400% 400%;
-  -webkit-animation: AnimationName 1.2s ease infinite;
-  -moz-animation: AnimationName 1.2s ease infinite;
-  animation: AnimationName 1.2s ease infinite;
+  -webkit-animation: AnimatedGradient 1.2s ease infinite;
+  -moz-animation: AnimatedGradient 1.2s ease infinite;
+  animation: AnimatedGradient 1.2s ease infinite;
   height: 5px;
 }
 

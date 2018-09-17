@@ -1,0 +1,31 @@
+.social-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 0;
+  display: inline-block;
+  margin-right: 0.75rem;
+  background-color: $blue;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+.facebook {
+  -webkit-mask-image: url('/assets/images/facebook.svg');
+  mask-image: url('/assets/images/facebook.svg');
+}
+
+.twitter {
+  -webkit-mask-image: url('/assets/images/twitter.svg');
+  mask-image: url('/assets/images/twitter.svg');
+}
+
+.linkedin {
+  -webkit-mask-image: url('/assets/images/linkedin.svg');
+  mask-image: url('/assets/images/linkedin.svg');
+}
+
+.mail {
+  -webkit-mask-image: url('/assets/images/mail.svg');
+  mask-image: url('/assets/images/mail.svg');
+}

@@ -61,20 +61,21 @@ export default class Department extends Component {
   render() {
   	const { jobs } = this.state;
   	return (
-  		<div class="container">
+  		<div class="container animated animatedFadeInUp fadeInUp">
   			<section class="section" style={{ paddingTop: '1.5rem' }}>
   				<nav class="breadcrumb is-paddingless" aria-label="breadcrumbs">
   				<ul class="is-paddingless">
-  					<li><Link style={{ fontSize: 14 }} class="text-black" href="#">Overview</Link></li>
+  					<li><Link style={{ fontSize: 14 }} class="text-black" href="/">Overview</Link></li>
   					<li><Link style={{ fontSize: 14 }} class="text-black" href="/jobs">All Jobs</Link></li>
   						<li>
-  							<Link style={{ fontSize: 14 }} class="text-black" href="#">
+  							<Link style={{ fontSize: 14 }} class="text-black is-active" href="#">
 								Technology
   							</Link>
   						</li>
   				</ul>
   			</nav>
   				<Hero
+            alignment="center"
   					title={'Our Technology team keeps it simple. And human.'}
   					subtitle={'Revolutionizing an old and backwards industry means new technology and forward-thinking ideas. And the grit to deal with messy problems.'}
   				/>
