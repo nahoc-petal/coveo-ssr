@@ -98,7 +98,7 @@ export default class Search extends Component {
   					lineHeight: '60px',
   					fontWeight: 300
   				}}
-  				>Jobs (49)</h3>
+  				>Jobs ({jobs ? jobs.length : null})</h3>
   				<hr />
   				{jobs ? this.renderJobs(jobs) : null}
   			</section>

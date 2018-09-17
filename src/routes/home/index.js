@@ -60,7 +60,7 @@ export default class Home extends Component {
   		description: 'wokr hard play hard bla bla'
   	},{
   		image: 'https://careers.coveo.com/content/1-home/background1.png',
-  		name: 'HR',
+  		name: 'Human Resources',
   		description: 'wokr hard play hard bla bla'
   	}, {
   		name: 'Business',
@@ -68,7 +68,17 @@ export default class Home extends Component {
   	}, {
   		name: 'Marketing',
   		description: 'wokr hard play hard bla bla'
-  	}]
+    }],
+    quotes: [{
+      content: 'Within one month of working at Coveo I declared to my friends and family that I have become a search nerd.',
+      author: 'Cohan Carpentier'
+    }, {
+      content: 'The outfit doesn\'t make the moine lul',
+      author: 'Cohan Lariviere'
+    },{
+      content: 'Im cool',
+      author: 'Cohan Lariviere'
+    }]
   }
 
   componentDidMount() {
@@ -213,7 +223,7 @@ export default class Home extends Component {
 
   render() {
 
-  	const { offices, departments, perks } = this.state;
+  	const { offices, departments, perks, quotes } = this.state;
     
   	return (
   		<div class="animated animatedFadeInUp fadeInUp">
@@ -254,10 +264,7 @@ export default class Home extends Component {
   				</div>
   				</section>
 
-  					<Quote
-  					quote={'Within one month of working at Coveo I declared to my friends and family that I have become a search nerd.'}
-  					author={'Iain N, Software Engineer'}
-  					/>
+  				{quotes ? <Quote quotes={quotes} /> : null}
 
   				<Hero
   					alignment="center"
