@@ -41,7 +41,7 @@ class Quote extends Component {
   			});
   		}
   		this.slideUp();
-  	}, 450);
+  	}, 650);
   }
 
   initAmountOfQuotes(quotes) {

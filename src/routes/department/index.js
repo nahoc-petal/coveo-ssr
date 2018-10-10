@@ -22,7 +22,7 @@ export default class Department extends Component {
   }
 
   renderQuotes = (quotes) => {
-  	const quotesNode = [];
+  	/*const quotesNode = [];
   	quotes.forEach(quote => {
   		quotesNode.push(
   			<Quote 
@@ -31,7 +31,7 @@ export default class Department extends Component {
         />
   		);
   	});
-  	return jobsNode;
+  	return quotesNode;*/
   }
   
   renderJobs = (jobs) => {
